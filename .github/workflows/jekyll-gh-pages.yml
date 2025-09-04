@@ -27,15 +27,7 @@ jobs:
       - name: Quarto install tinytex
         run: quarto install tinytex
 
-      - name: Install Python and Dependencies
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          cache: 'pip'
 
-      - run: pip install jupyter
-
-      - run: pip install -r requirements.txt
 
       - run: quarto render --to html
 
