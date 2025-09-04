@@ -1,0 +1,16 @@
+---
+title: "IT Status Dashboard"
+---
+
+## IT Status Overview
+
+Here's a quick overview of the current IT status.
+
+### System Performance
+
+```{r}
+# Placeholder for a chart
+plot(1:10, 1:10)
+```
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
