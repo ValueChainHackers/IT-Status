@@ -20,55 +20,20 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="IT Status Dashboard_files/libs/clipboard/clipboard.min.js"></script>
-<script src="IT Status Dashboard_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="IT Status Dashboard_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="IT Status Dashboard_files/libs/quarto-html/popper.min.js"></script>
-<script src="IT Status Dashboard_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="IT Status Dashboard_files/libs/quarto-html/anchor.min.js"></script>
-<link href="IT Status Dashboard_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="IT Status Dashboard_files/libs/quarto-html/quarto-syntax-highlighting-226bd0f977fa82dfae4534cac220d79a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="IT Status Dashboard_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="IT Status Dashboard_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="IT Status Dashboard_files/libs/bootstrap/bootstrap-c55efa1fd218a545ebab9e5bcab7af02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="dashboard_files/libs/clipboard/clipboard.min.js"></script>
+<script src="dashboard_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="dashboard_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="dashboard_files/libs/quarto-html/popper.min.js"></script>
+<script src="dashboard_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="dashboard_files/libs/quarto-html/anchor.min.js"></script>
+<link href="dashboard_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="dashboard_files/libs/quarto-html/quarto-syntax-highlighting-226bd0f977fa82dfae4534cac220d79a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="dashboard_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="dashboard_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="dashboard_files/libs/bootstrap/bootstrap-c55efa1fd218a545ebab9e5bcab7af02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -98,23 +63,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="it-status-overview" class="level2">
-<h2 class="anchored" data-anchor-id="it-status-overview">IT Status Overview</h2>
-<p>Here’s a quick overview of the current IT status.</p>
-<section id="system-performance" class="level3">
-<h3 class="anchored" data-anchor-id="system-performance">System Performance</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Placeholder for a chart</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="IT-Status-Dashboard_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<section id="it-status-dashboard" class="level1">
+<h1>IT Status Dashboard</h1>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This dashboard provides a high-level overview of the status of various IT services.</p>
+</section>
+<section id="service-status" class="level2">
+<h2 class="anchored" data-anchor-id="service-status">Service Status</h2>
+<section id="openwebui" class="level3">
+<h3 class="anchored" data-anchor-id="openwebui">OpenWebUI</h3>
+<p>Status: 🟢 (OK) Latency: 41ms</p>
+</section>
+<section id="n8n" class="level3">
+<h3 class="anchored" data-anchor-id="n8n">n8n</h3>
+<p>Status: 🟢 (OK)</p>
+</section>
+<section id="qdrant" class="level3">
+<h3 class="anchored" data-anchor-id="qdrant">Qdrant</h3>
+<p>Status: 🟠 (Warning)</p>
+</section>
+<section id="supabase" class="level3">
+<h3 class="anchored" data-anchor-id="supabase">Supabase</h3>
+<p>Status: 🔴 (Critical)</p>
+</section>
+</section>
+<section id="recent-incidents" class="level2">
+<h2 class="anchored" data-anchor-id="recent-incidents">Recent Incidents</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>Service</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2024-09-05</td>
+<td>Supabase</td>
+<td>Database connection issues</td>
+</tr>
+<tr class="even">
+<td>2024-09-04</td>
+<td>Qdrant</td>
+<td>Slow query performance</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
