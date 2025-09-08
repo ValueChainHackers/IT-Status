@@ -1,0 +1,31 @@
+---
+title: "IT Status Dashboard"
+---
+
+# IT Status Dashboard
+
+## Overview
+
+This dashboard provides a high-level overview of the status of various IT services.
+
+## Service Status
+
+### OpenWebUI
+Status: 🟢 (OK)
+Latency: 41ms
+
+### n8n
+Status: 🟢 (OK)
+
+### Qdrant
+Status: 🟠 (Warning)
+
+### Supabase
+Status: 🔴 (Critical)
+
+## Recent Incidents
+
+| Date       | Service   | Description |
+|------------|-----------|-------------|
+| 2024-09-05 | Supabase  | Database connection issues |
+| 2024-09-04 | Qdrant    | Slow query performance |
