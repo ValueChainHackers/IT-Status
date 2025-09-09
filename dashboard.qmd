@@ -2,30 +2,14 @@
 title: "IT Status Dashboard"
 ---
 
-# IT Status Dashboard
+## IT Service Status
 
-## Overview
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-This dashboard provides a high-level overview of the status of various IT services.
+## Project Status
 
-## Service Status
-
-### OpenWebUI
-Status: 🟢 (OK)
-Latency: 41ms
-
-### n8n
-Status: 🟢 (OK)
-
-### Qdrant
-Status: 🟠 (Warning)
-
-### Supabase
-Status: 🔴 (Critical)
-
-## Recent Incidents
-
-| Date       | Service   | Description |
-|------------|-----------|-------------|
-| 2024-09-05 | Supabase  | Database connection issues |
-| 2024-09-04 | Qdrant    | Slow query performance |
+| Project | Status    |
+|---------|-----------|
+| Project 1 | On Track  |
+| Project 2 | Delayed   |
+| Project 3 | Completed |
