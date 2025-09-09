@@ -3,6 +3,17 @@
 A lightweight, auto-updating **status dashboard** for the Value Chain Hackers infrastructure.  
 Built with [Quarto Dashboards](https://quarto.org/docs/dashboards/) and published automatically via **GitHub Actions** + **GitHub Pages**.
 
+
+Task is bulletpoint list; 
+
+
+
+In october we'll have that.
+In september we'll have that; 
+
+We should would on what we look like.
+
+
 ---
 
 ## ✨ Features
