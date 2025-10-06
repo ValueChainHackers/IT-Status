@@ -1,15 +1,160 @@
 ---
-title: "IT Status Dashboard"
+title: "VCH Infrastructure Status"
+format:
+  dashboard:
+    theme: darkly
+    orientation: columns
 ---
 
-## IT Service Status
+```{python}
+#| output: false
+import requests
+import yaml
+from datetime import datetime
+from pathlib import Path
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+# Load architecture
+with open('Architecture.yaml', 'r') as f:
+    arch = yaml.safe_load(f)
 
-## Project Status
+def check_service(url, timeout=5):
+    """Check if a service is responding"""
+    try:
+        start = datetime.now()
+        resp = requests.get(f"https://{url}", timeout=timeout, verify=True)
+        elapsed_ms = (datetime.now() - start).total_seconds() * 1000
 
-| Project | Status    |
-|---------|-----------|
-| Project 1 | On Track  |
-| Project 2 | Delayed   |
-| Project 3 | Completed |
+        if resp.status_code < 400:
+            return {"status": "🟢 UP", "ms": int(elapsed_ms), "code": resp.status_code}
+        else:
+            return {"status": "🟠 WARN", "ms": int(elapsed_ms), "code": resp.status_code}
+    except requests.exceptions.Timeout:
+        return {"status": "🟠 TIMEOUT", "ms": timeout*1000, "code": None}
+    except Exception as e:
+        return {"status": "🔴 DOWN", "ms": None, "code": None}
+
+# Collect all services from architecture
+services = []
+for stage_name, stage_data in arch.get('stages', {}).items():
+    if 'hosts' in stage_data:
+        for host in stage_data['hosts']:
+            for svc in host.get('services', []):
+                services.append({
+                    'name': svc['name'],
+                    'url': svc['url'],
+                    'stage': stage_name,
+                    'port': svc.get('port')
+                })
+
+# Check services
+results = {}
+for svc in services:
+    results[svc['name']] = check_service(svc['url'])
+```
+
+## Development Services {.tabset}
+
+```{python}
+#| content: valuebox
+#| title: "Open WebUI (Dev)"
+from IPython.display import Markdown
+
+res = results.get('open-webui', {})
+status = res.get('status', '🔴 UNKNOWN')
+ms = res.get('ms')
+value = f"{ms}ms" if ms else "N/A"
+
+dict(
+    icon = "robot",
+    color = "success" if "🟢" in status else ("warning" if "🟠" in status else "danger"),
+    value = value
+)
+```
+
+```{python}
+#| content: valuebox
+#| title: "n8n (Dev)"
+res = results.get('n8n', {})
+status = res.get('status', '🔴 UNKNOWN')
+ms = res.get('ms')
+value = f"{ms}ms" if ms else "N/A"
+
+dict(
+    icon = "gear",
+    color = "success" if "🟢" in status else ("warning" if "🟠" in status else "danger"),
+    value = value
+)
+```
+
+```{python}
+#| content: valuebox
+#| title: "Qdrant (Dev)"
+res = results.get('qdrant', {})
+status = res.get('status', '🔴 UNKNOWN')
+ms = res.get('ms')
+value = f"{ms}ms" if ms else "N/A"
+
+dict(
+    icon = "database",
+    color = "success" if "🟢" in status else ("warning" if "🟠" in status else "danger"),
+    value = value
+)
+```
+
+```{python}
+#| content: valuebox
+#| title: "Flowise (Dev)"
+res = results.get('flowise', {})
+status = res.get('status', '🔴 UNKNOWN')
+ms = res.get('ms')
+value = f"{ms}ms" if ms else "N/A"
+
+dict(
+    icon = "diagram-3",
+    color = "success" if "🟢" in status else ("warning" if "🟠" in status else "danger"),
+    value = value
+)
+```
+
+## Acceptance Services
+
+```{python}
+#| content: valuebox
+#| title: "JupyterHub"
+res = results.get('jupyterhub', {})
+status = res.get('status', '🔴 UNKNOWN')
+ms = res.get('ms')
+value = f"{ms}ms" if ms else "N/A"
+
+dict(
+    icon = "journal-code",
+    color = "success" if "🟢" in status else ("warning" if "🟠" in status else "danger"),
+    value = value
+)
+```
+
+## All Services Status
+
+```{python}
+import pandas as pd
+
+# Build table
+rows = []
+for svc in services:
+    res = results.get(svc['name'], {})
+    rows.append({
+        'Service': svc['name'],
+        'Stage': svc['stage'].upper(),
+        'URL': svc['url'],
+        'Status': res.get('status', '🔴 UNKNOWN'),
+        'Latency': f"{res.get('ms')}ms" if res.get('ms') else "N/A",
+        'HTTP Code': res.get('code', 'N/A')
+    })
+
+df = pd.DataFrame(rows)
+Markdown(df.to_markdown(index=False))
+```
+
+---
+
+*Last updated: {python} datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')*
